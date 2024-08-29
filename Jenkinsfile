@@ -69,6 +69,16 @@ pipeline {
                     echo 'Tool - AWS EC2'
                 }
             }
+             post {
+                always {
+                    emailext(
+                        to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Security Scan - ${currentBuild.currentResult}",
+                        body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
+                        attachLog: true
+                    )
+                }
+            }
         }
 
         stage('Integration Test on Staging') {
@@ -78,6 +88,16 @@ pipeline {
                     echo 'Tool - Maven'
                 }
             }
+             post {
+                always {
+                    emailext(
+                        to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Security Scan - ${currentBuild.currentResult}",
+                        body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
+                        attachLog: true
+                    )
+                }
+            }
         }
 
         stage('Deploy to Production') {
@@ -85,6 +105,16 @@ pipeline {
                 script {
                     echo 'Task - Deploy the application to a production server'
                     echo 'Tool - AWS EC2'
+                }
+            }
+             post {
+                always {
+                    emailext(
+                        to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Security Scan - ${currentBuild.currentResult}",
+                        body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
+                        attachLog: true
+                    )
                 }
             }
         }
