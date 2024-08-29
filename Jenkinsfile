@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'hashinigunathilake7@gmail.com'
+        EMAIL = 'hashinigunathilake7@gmail.com'
     }
 
     stages {
@@ -13,6 +13,15 @@ pipeline {
                     echo 'Tool - Maven'
                 }
             }
+             post {
+                always {
+                    emailext(
+                        to: "${env.EMAIL}",
+                        subject: "Unit and Integration Tests - ${currentBuild.currentResult}",
+                        body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
+                        attachLog: true
+                    )
+                }
         }
 
         stage('Unit and Integration Tests') {
@@ -25,7 +34,7 @@ pipeline {
             post {
                 always {
                     emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
+                        to: "${env.EMAIL}",
                         subject: "Unit and Integration Tests - ${currentBuild.currentResult}",
                         body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
                         attachLog: true
@@ -41,6 +50,15 @@ pipeline {
                     echo 'Tool - SonarQube'
                 }
             }
+             post {
+                always {
+                    emailext(
+                        to: "${env.EMAIL}",
+                        subject: "Unit and Integration Tests - ${currentBuild.currentResult}",
+                        body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
+                        attachLog: true
+                    )
+                }
         }
 
         stage('Security Scan') {
@@ -53,7 +71,7 @@ pipeline {
             post {
                 always {
                     emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
+                        to: "${env.EMAIL}",
                         subject: "Security Scan - ${currentBuild.currentResult}",
                         body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
                         attachLog: true
@@ -72,7 +90,7 @@ pipeline {
              post {
                 always {
                     emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
+                        to: "${env.EMAIL}",
                         subject: "Security Scan - ${currentBuild.currentResult}",
                         body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
                         attachLog: true
@@ -91,7 +109,7 @@ pipeline {
              post {
                 always {
                     emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
+                        to: "${env.EMAIL}",
                         subject: "Security Scan - ${currentBuild.currentResult}",
                         body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
                         attachLog: true
@@ -110,7 +128,7 @@ pipeline {
              post {
                 always {
                     emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
+                        to: "${env.EMAIL}",
                         subject: "Security Scan - ${currentBuild.currentResult}",
                         body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
                         attachLog: true
