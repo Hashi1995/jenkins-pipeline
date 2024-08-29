@@ -31,12 +31,9 @@ pipeline {
             }
             post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
-                        subject: "Unit and Integration Tests - ${currentBuild.currentResult}",
-                        body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
+                    mail to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Build Stage Status: ${currentBuild.currentResult}",
+                        body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
         }
@@ -50,12 +47,9 @@ pipeline {
             }
             post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
-                        subject: "Code Analysis - ${currentBuild.currentResult}",
-                        body: "The Code Analysis stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
+                    mail to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Build Stage Status: ${currentBuild.currentResult}",
+                        body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
         }
@@ -67,14 +61,11 @@ pipeline {
                     echo 'Tool - OWASP Dependency-Check'
                 }
             }
-            post {
+           post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
-                        subject: "Security Scan - ${currentBuild.currentResult}",
-                        body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
+                    mail to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Build Stage Status: ${currentBuild.currentResult}",
+                        body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
         }
@@ -88,12 +79,9 @@ pipeline {
             }
             post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
-                        subject: "Deploy to Staging - ${currentBuild.currentResult}",
-                        body: "The Deploy to Staging stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
+                    mail to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Build Stage Status: ${currentBuild.currentResult}",
+                        body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
         }
@@ -107,12 +95,9 @@ pipeline {
             }
             post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
-                        subject: "Integration Test on Staging - ${currentBuild.currentResult}",
-                        body: "The Integration Test on Staging stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
+                    mail to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Build Stage Status: ${currentBuild.currentResult}",
+                        body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
         }
@@ -126,12 +111,9 @@ pipeline {
             }
             post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
-                        subject: "Deploy to Production - ${currentBuild.currentResult}",
-                        body: "The Deploy to Production stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
+                    mail to: "${env.EMAIL_RECIPIENT}",
+                        subject: "Build Stage Status: ${currentBuild.currentResult}",
+                        body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
         }
