@@ -15,12 +15,11 @@ pipeline {
             }
             post {
                 always {
-                    mail to: 'hashinigunathilake7@gmail.com',
+                    mail to: "${env.EMAIL_RECIPIENT}",
                         subject: "Build Stage Status: ${currentBuild.currentResult}",
                         body: "The Build stage has completed with status: ${currentBuild.currentResult}."
                 }
             }
-        }
         }
 
         stage('Unit and Integration Tests') {
@@ -137,4 +136,4 @@ pipeline {
             }
         }
     }
-
+}
