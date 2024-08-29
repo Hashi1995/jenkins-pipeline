@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
                 script {
                     echo 'Task - Build the code using a build automation tool'
@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('Unit and Integration Tests') {
+        stage('unit and Integration Tests') {
             steps {
                 script {
                     echo 'Task - Run unit tests to ensure the code functions'
@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-        stage('Code Analysis') {
+        stage('code Analysis') {
             steps {
                 script {
                     echo 'Task - Integrate a code analysis tool'
@@ -54,7 +54,7 @@ pipeline {
             }
         }
 
-        stage('Security Scan') {
+        stage('security Scan') {
             steps {
                 script {
                     echo 'Task - Perform a security scan on the code using a tool to identify any vulnerabilities'
@@ -70,7 +70,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('deploy to Staging') {
             steps {
                 script {
                     echo 'Task - Deploy the application to a staging server'
@@ -86,7 +86,7 @@ pipeline {
             }
         }
 
-        stage('Integration Test on Staging') {
+        stage('integration Test on Staging') {
             steps {
                 script {
                     echo 'Task - Run integration tests on the staging environment to ensure the application'
@@ -102,7 +102,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production') {
+        stage('deploy to Production') {
             steps {
                 script {
                     echo 'Task - Deploy the application to a production server'
