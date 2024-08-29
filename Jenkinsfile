@@ -15,13 +15,10 @@ pipeline {
             }
             post {
                 always {
-                    emailext(
-                        to: "${env.EMAIL_RECIPIENT}",
+                   mail_to: "${env.EMAIL_RECIPIENT}",
                         subject: "Build Stage - ${currentBuild.currentResult}",
                         body: "The Build stage has completed with status: ${currentBuild.currentResult}.",
-                        attachLog: true
-                    )
-                }
+                        }
             }
         }
 
